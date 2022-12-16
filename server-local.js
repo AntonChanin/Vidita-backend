@@ -5,6 +5,9 @@ const serverless = require('serverless-http');
 
 const app = express();
 const router = express.Router();
+const PORT = 3001;
+
+app.listen(PORT, () => {});
 
 router.get('/', (req, res) => {
   res.json({
