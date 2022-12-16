@@ -22,7 +22,7 @@ PATHES.forEach((path) => {
 
 router.post('/', (req, res) => res.json({ body: req.body }));
 router.post('/cancel', (req, res) => {
-  res.json({ body: JSON.parse({ body: req.body }) }); //archive_row: JSON.stringify(archivator(req.body)) })
+  res.json({ body: JSON.parse(req.body), archive_row: JSON.stringify('') });
   res.send(201);
 });
 
