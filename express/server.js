@@ -31,7 +31,7 @@ router.post('/cancel', (req, res) => {
       return record;
     },
   )] }), { encoding:'utf8',flag:'w' })
-  res.json({ body: archive });
+  res.json({ body: fs.readFileSync('../data/archive.json', 'utf-8') });
   res.send(201);
 });
 
