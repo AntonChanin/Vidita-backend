@@ -22,16 +22,16 @@ PATHES.forEach((path) => {
 
 router.post('/', (req, res) => res.json({ body: req.body }));
 router.post('/cancel', (req, res) => {
-  try {
-    // fs.writeFileSync('../data/archive.json', JSON.stringify({ answer: archivator(req.body) }), { encoding:'utf8',flag:'w' });
-    //const archive = JSON.stringify(fs.readFileSync('../data/archive.json', 'utf-8'));
-    //res.json({ body: archive });
-  } catch {
-    res.json({ body: JSON.parse(req.body) });
-  } finally {
+  // try {
+  //   // fs.writeFileSync('../data/archive.json', JSON.stringify({ answer: archivator(req.body) }), { encoding:'utf8',flag:'w' });
+  //   //const archive = JSON.stringify(fs.readFileSync('../data/archive.json', 'utf-8'));
+  //   //res.json({ body: archive });
+  // } catch {
+  //   res.json({ body: JSON.parse(req.body) });
+  // } finally {
     res.json({ body: JSON.parse(req.body) });
     res.send(201);
-  }
+ // }
 });
 
 app.use(bodyParser.json());
