@@ -26,8 +26,9 @@ router.post('/cancel', (req, res) => {
     fs.writeFileSync('../data/archive.json', JSON.stringify({ answer: archivator(req.body) }), { encoding:'utf8',flag:'w' });
     const archive = JSON.stringify(fs.readFileSync('../data/archive.json', 'utf-8'));
     res.json({ body: archive });
-  } finally {
+  } catch {
     res.json({ body: JSON.parse(req.body) });
+  } finally {
     res.send(201);
   }
 });
