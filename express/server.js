@@ -37,6 +37,8 @@ router.post('/cancel', (req, res) => {
 });
 
 // запасной контур
+app.use(express.json());
+app.use(express.urlencoded());
 
 PATHES.forEach((path) => {
   app.get(path.replace('.json', ''), (req, res) => res.json(fs.readFileSync(`'..${path}`, 'utf-8')));
