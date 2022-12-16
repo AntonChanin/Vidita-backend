@@ -7,7 +7,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const { default: PATHES } = require('../consts');
-// const archivator = require('../utils/archivator');
+const archivator = require('../utils/archivator');
 
 const router = express.Router();
 router.get('/', (req, res) => {
