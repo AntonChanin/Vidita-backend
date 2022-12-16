@@ -7,6 +7,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const { default: PATHES } = require('../consts');
+const archivator = require('../utils/archivator');
 
 const router = express.Router();
 router.get('/', (req, res) => {
@@ -22,19 +23,13 @@ PATHES.forEach((path) => {
 router.post('/', (req, res) => res.json({ body: req.body }));
 router.post('/cancel', (req, res) => {
   // res.json({ body: JSON.parse(req.body) });
-  const archive = JSON.parse(fs.readFileSync('../data/archive.json', 'utf-8'));
   
   try {
-    fs.writeFileSync('../data/archive.json', JSON.stringify({ "answer": [
-      archive.answer, ...[
-        ...JSON.parse(req.body)
-      ]
-      .map((record) => {
-        record.status = "archive";
-        return record;
-      },
-    )] }), { encoding:'utf8',flag:'w' });
-    res.json({ body: archive, archive: JSON.stringify(archive) });
+    fs.writeFileSync('../data/archive.json', JSON.stringify({ "answer": archivator(req.body) }), { encoding:'utf8',flag:'w' });
+    const archive = JSON.parse(fs.readFileSync('../data/archive.json', 'utf-8'));
+    res.json({ body: archive });
+  } catch (error) {
+    res.json({ error });
   } finally {
     res.json({ body: JSON.parse(req.body) });
     res.send(201);
