@@ -22,9 +22,16 @@ PATHES.forEach((path) => {
 
 router.post('/', (req, res) => res.json({ body: req.body }));
 router.post('/cancel', (req, res) => {
-  res.json({ body: req.body });
-  res.send(201);
-
+  try {
+    fs.writeFileSync('../data/archive.json', JSON.stringify({ answer: archivator(req.body) }), { encoding:'utf8',flag:'w' });
+    const archive = JSON.stringify(fs.readFileSync('../data/archive.json', 'utf-8'));
+    res.json({ body: archive });
+    res.send(201);
+  } catch {
+    res.json({ body: req.body });
+  } finally {
+    res.send(201);
+  }
 });
 
 app.use(bodyParser.json());
@@ -33,13 +40,3 @@ app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 module.exports = app;
 module.exports.handler = serverless(app);
-
- // try {
-  //   // fs.writeFileSync('../data/archive.json', JSON.stringify({ answer: archivator(req.body) }), { encoding:'utf8',flag:'w' });
-  //   //const archive = JSON.stringify(fs.readFileSync('../data/archive.json', 'utf-8'));
-  //   //res.json({ body: archive });
-  // } catch {
-  //   res.json({ body: JSON.parse(req.body) });
-  // } finally {
-   
- // }
