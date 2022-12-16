@@ -32,8 +32,12 @@ router.post('/cancel', (req, res) => {
       return record;
     },
   )] }), { encoding:'utf8',flag:'w' });
-  res.json({ body: JSON.parse(archive) });
-  res.send(201);
+  try {
+    res.json({ body: archive, archive: JSON.stringify(archive) });
+  } finally {
+    res.json({ body: JSON.parse(req.body) });
+    res.send(201);
+  }
 });
 
 app.use(bodyParser.json());
