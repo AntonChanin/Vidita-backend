@@ -1,9 +1,9 @@
-const fs = require('fs');
+//const fs = require('fs');
 
-const archive = JSON.parse(fs.readFileSync('../data/archive.json', 'utf-8'));
+//const archive = JSON.parse(fs.readFileSync('../data/archive.json', 'utf-8'));
 
 const archivator = (newRecord: any) => {
-  return [...archive.answer, newRecord];
+  return [newRecord];
   // [
   //   ...archive.answer, ...[
   //     ...JSON.parse(newRecord)
