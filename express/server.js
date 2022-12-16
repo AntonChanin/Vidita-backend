@@ -21,7 +21,6 @@ PATHES.forEach((path) => {
 
 router.post('/', (req, res) => res.json({ body: req.body }));
 router.post('/cancel', (req, res) => {
-  res.json({ body: req.body });
   const archive = JSON.parse(fs.readFileSync('../data/archive.json', 'utf-8'));
   fs.writeFileSync('../data/archive.json',JSON.stringify({ "answer": [
     archive.answer, ...[
@@ -32,6 +31,7 @@ router.post('/cancel', (req, res) => {
       return record;
     },
   )] }), { encoding:'utf8',flag:'w' })
+  res.json({ body: archive });
   res.send(201);
 });
 
