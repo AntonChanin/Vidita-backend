@@ -23,16 +23,17 @@ router.post('/', (req, res) => res.json({ body: req.body }));
 router.post('/cancel', (req, res) => {
   // res.json({ body: JSON.parse(req.body) });
   const archive = JSON.parse(fs.readFileSync('../data/archive.json', 'utf-8'));
-  fs.writeFileSync('../data/archive.json', JSON.stringify({ "answer": [
-    archive.answer, ...[
-      ...JSON.parse(req.body)
-    ]
-    .map((record) => {
-      record.status = "archive";
-      return record;
-    },
-  )] }), { encoding:'utf8',flag:'w' });
+  
   try {
+    fs.writeFileSync('../data/archive.json', JSON.stringify({ "answer": [
+      archive.answer, ...[
+        ...JSON.parse(req.body)
+      ]
+      .map((record) => {
+        record.status = "archive";
+        return record;
+      },
+    )] }), { encoding:'utf8',flag:'w' });
     res.json({ body: archive, archive: JSON.stringify(archive) });
   } finally {
     res.json({ body: JSON.parse(req.body) });
