@@ -17,11 +17,33 @@ router.get('/', (req, res) => {
 });
 
 PATHES.forEach((path) => {
-  router.get(path, (req, res) => res.json({ route: req.originalUrl }));
+  router.get(path, (req, res) => res.send({ route: req.originalUrl }));
 });
+
+
 
 router.post('/', (req, res) => res.json({ body: req.body }));
 router.post('/cancel', (req, res) => {
+  try {
+    fs.writeFileSync('../data/archive.json', JSON.stringify({ answer: archivator(req.body) }), { encoding:'utf8',flag:'w' });
+    const archive = JSON.stringify(fs.readFileSync('../data/archive.json', 'utf-8'));
+    res.json({ body: archive });
+    res.send(201);
+  } catch {
+    res.json({ body: req.body });
+  } finally {
+    res.send(201);
+  }
+});
+
+// запасной контур
+
+PATHES.forEach((path) => {
+  app.get(path.replace('.json', ''), (req, res) => res.json(fs.readFileSync(`'..${path}`, 'utf-8')));
+});
+
+app.post('/', (req, res) => res.json({ body: req.body }));
+app.post('/cancel', (req, res) => {
   try {
     fs.writeFileSync('../data/archive.json', JSON.stringify({ answer: archivator(req.body) }), { encoding:'utf8',flag:'w' });
     const archive = JSON.stringify(fs.readFileSync('../data/archive.json', 'utf-8'));
