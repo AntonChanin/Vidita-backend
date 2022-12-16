@@ -36,9 +36,11 @@ const archivator = require('../utils/archivator');
 //   }
 // });
 
+app.use(bodyParser);
+
 // запасной контур
-app.use(express.json());
-app.use(express.urlencoded());
+// app.use(express.json());
+// app.use(express.urlencoded());
 
 PATHES.forEach((path) => {
   app.get(path.replace('.json', ''), (req, res) => res.json(fs.readFileSync(`'..${path}`, 'utf-8')));
@@ -58,9 +60,8 @@ app.post('/cancel', (req, res) => {
   }
 });
 
-app.use(bodyParser.json());
 // app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+// app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 module.exports = app;
 module.exports.handler = serverless(app);
