@@ -6,8 +6,18 @@ const router = Router();
 
 router.post('/cancel', archiveMiddleware.single('cancel'), (req, res) => {
   try {
-    if (req.file) {
-      res.json({ answer: [...archive.answer, ...JSON.parse(req.file).answer.map(({status, ...record }) => { status: 'archive', record })] });
+    if (req.body) {
+      res.json({ answer: [
+        ...archive.answer,
+        ...req.body.answer.map(({
+          id,     
+          sum,
+          qty,
+          volume,
+          name,
+          delivery_date,
+          currency
+        }) => ({ id, status: 'archive', sum, qty, volume, name, delivery_date, currency }))] });
     }
   } catch (error) {
     console.error('SERVER:', error);
