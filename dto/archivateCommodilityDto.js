@@ -21,4 +21,4 @@ const archivateCommodilityDto = (body) => (
   )
 );
 
-export default archivateCommodilityDto;
+exports.archivateCommodilityDto = archivateCommodilityDto;
