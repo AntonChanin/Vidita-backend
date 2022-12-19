@@ -17,6 +17,7 @@
   ],
   "author": "AVH",
   "dependencies": {
+    "circular-json": "^0.5.9",
     "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
