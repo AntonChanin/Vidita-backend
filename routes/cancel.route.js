@@ -11,7 +11,7 @@ router.post('/cancel', archiveMiddleware.single('cancel'), (req, res) => {
       res.json({
         answer: [
           ...archive.answer,
-          ...archivateCommodilityDto(req.body),
+          ...[archivateCommodilityDto(req.body)].flat(),
         ]
       });
     }
