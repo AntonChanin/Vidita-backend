@@ -1,8 +1,8 @@
 {
     "answer": [
-        { "id": "7cc9b2a4-a41c-433e-9303-90f52e6f51d8", "status": "archive", "sum": 1000, "qty": 16, "volume": 120, "name": "pine wood", "delivery_date": "11.10.2022", "currency": "" },
-        { "id": "55ccaffb-8fc3-4c69-b1de-cc3252193ef0", "status": "archive", "sum": 1200, "qty": 0, "volume": 12, "name": "paper", "delivery_date": "10.01.2022", "currency": "" },
-        { "id": "ec5ad7f6-3b67-44bc-bdce-6c3b8db3d09b", "status": "archive", "sum": 15, "qty": 150, "volume": 40, "name": "carrot", "delivery_date": "12.10.2022", "currency": "" },
-        { "id": "486e3951-0834-4ced-8f85-a1c2f4ac92ff", "status": "archive", "sum": 160, "qty": 44, "volume": 7, "name": "carrot seed", "delivery_date": "12.12.2022", "currency": "" }
+        { "id": "7cc9b2a4-a41c-433e-9303-90f52e6f51d8", "status": "archive", "sum": 1000, "qty": 16, "volume": 120, "name": "pine wood", "delivery_date": "11.10.2022", "currency": "₽" },
+        { "id": "55ccaffb-8fc3-4c69-b1de-cc3252193ef0", "status": "archive", "sum": 1200, "qty": 0, "volume": 12, "name": "paper", "delivery_date": "10.01.2022", "currency": "₽" },
+        { "id": "ec5ad7f6-3b67-44bc-bdce-6c3b8db3d09b", "status": "archive", "sum": 15, "qty": 150, "volume": 40, "name": "carrot", "delivery_date": "12.10.2022", "currency": "₽" },
+        { "id": "486e3951-0834-4ced-8f85-a1c2f4ac92ff", "status": "archive", "sum": 160, "qty": 44, "volume": 7, "name": "carrot seed", "delivery_date": "12.12.2022", "currency": "₽" }
     ]
 }
